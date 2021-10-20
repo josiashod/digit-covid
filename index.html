@@ -571,6 +571,8 @@
 
             // "6.3654,2.4183"
             $.get("https://ipinfo.io", function(response) {
+                lat = response.loc.split(',')[0]
+                long = response.loc.split(',')[1]
                 getCenter({search: 'c', lat: lat, long: long})
             }, "json")
 
