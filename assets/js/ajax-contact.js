@@ -10,14 +10,17 @@ $(function() {
 	$(form).submit(function(e) {
 		// Stop the browser from submitting the form.
 		e.preventDefault();
+		$('#phone').val(iti.getNumber(intlTelInputUtils.numberFormat.E164))
 
 		// Serialize the form data.
 		var formData = $(form).serialize();
 
+		console.log($(form).serialize())
+
 		// Submit the form using AJAX.
 		$.ajax({
 			type: 'POST',
-			url: $(form).attr('action'),
+			url: "https://stopcovidbj.waxkanda.com/api/send_mail",
 			data: formData
 		})
 		.done(function(response) {
@@ -26,10 +29,12 @@ $(function() {
 			$(formMessages).addClass('success');
 
 			// Set the message text.
-			$(formMessages).text(response);
+			// console.log(response)
+			$(formMessages).text("Question Envoyé");
 
 			// Clear the form.
 			$('#contact-form input,#contact-form textarea').val('');
+			$span.remove()
 		})
 		.fail(function(data) {
 			// Make sure that the formMessages div has the 'error' class.
