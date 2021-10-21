@@ -294,6 +294,86 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="vaccinModal" tabindex="-1" role="dialog" aria-labelledby="vaccinModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary" id="vaccinModalLabel">Info covid</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <section class="about-area">
+                        <div class="container">
+                            <div class="faq-content">
+                                <div class="about-title">
+                                    <h4 class="title">Frequently Asked Questions <br> About Our Site</h4>
+                                </div> <!-- faq title -->
+                                <div class="about-accordion">
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Frequently Asked Question One</a>
+                                            </div>
+        
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
+                                                </div>
+                                            </div> 
+                                        </div> <!-- card -->
+                                        <div class="card">
+                                            <div class="card-header" id="headingTwo">
+                                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Frequently Asked Question Two</a>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
+                                                </div>
+                                            </div>
+                                        </div> <!-- card -->
+                                        <div class="card">
+                                            <div class="card-header" id="headingThree">
+                                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Frequently Asked Question Three</a>
+                                            </div>
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
+                                                </div>
+                                            </div>
+                                        </div> <!-- card -->
+                                        <div class="card">
+                                            <div class="card-header" id="headingFore">
+                                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFore" aria-expanded="false" aria-controls="collapseFore">Frequently Asked Question Four</a>
+                                            </div>
+                                            <div id="collapseFore" class="collapse" aria-labelledby="headingFore" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
+                                                </div>
+                                            </div>
+                                        </div> <!-- card -->
+                                        <div class="card">
+                                            <div class="card-header" id="headingFive">
+                                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Frequently Asked Question Five</a>
+                                            </div>
+                                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                                <div class="card-body">
+                                                    <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
+                                                </div>
+                                            </div>
+                                        </div> <!-- card -->
+                                    </div>
+                                </div> <!-- faq accordion -->
+                            </div> <!-- faq content -->
+                        </div> <!-- container -->
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!--====== CONTACT PART START ======-->
 
@@ -411,18 +491,6 @@
 
     <!--====== PART START ======-->
 
-<!--
-    <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
--->
-
     <!--====== PART ENDS ======-->
 
 
@@ -475,6 +543,34 @@
     <script>
         let lat, long, search = "c"
         let centers = []
+
+        const accordion = (length, data) => {
+            let accordion = ""
+            for (let index = 1; index < length; index++) {
+                let paragraph = ""
+                data['reponse'+index].forEach(el => {
+                    paragraph += el.text + "<br>"
+                });
+
+                console.log( data['reponse'+index])
+
+                accordion += `
+                    <div class="card">
+                        <div class="card-header" id="${index}">
+                            <a href="#" data-toggle="collapse" data-target="#${'question'+index}" aria-expanded="true" aria-controls="${'question'+index}">${ data['question'+index][0].text }</a>
+                        </div>
+
+                        <div id="${'question'+index}" class="collapse" aria-labelledby="${index}" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p class="text">${paragraph}</p>
+                            </div>
+                        </div> 
+                    </div> <!-- card -->
+                `
+            }
+
+            return accordion
+        } 
 
         const getCenter = ({lat, long, search}) => {
             $.get(`https://stopcovidbj.waxkanda.com/api/search?term=${search}&lat=${lat}&long=${long}`, function(data){
@@ -571,20 +667,48 @@
                     console.log(response)
                     $('#vaccine_container').empty()
                     response.results.forEach(result => {
-                        console.log(result)
+                        length = (Object.keys(result.data).length - 1) / 2
                         $('#vaccine_container').append(`<div class="col-lg-6 col-md-7 col-sm-9">
                             <div class="single-features mt-40">
-                                <div class="features-title-icon d-flex justify-content-between">
-                                    <h4 class="features-title"><a href="#">${ result.data.vaccin_title[0].text }</a></h4>
-                                    <div class="features-icon">
-                                        <i class="lni lni-first-aid"></i>
+                                    <div class="features-title-icon d-flex justify-content-between">
+                                        <h4 class="features-title"><a href="#" data-toggle="modal" data-target="#${result.id}Modal">${ result.data.vaccin_title[0].text }</a></h4>
+                                        <div class="features-icon">
+                                            <i class="lni lni-first-aid"></i>
+                                        </div>
+                                    </div>
+                                    <div class="features-content">
+                                        <a class="features-btn" href="#" data-toggle="modal" data-target="#${result.id}Modal">Voir plus</a>
+                                    </div>
+                                </div> <!-- single features -->
+                            </div>
+
+                            <div class="modal fade" id="${result.id}Modal" tabindex="-1" role="dialog" aria-labelledby="${result.id}ModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-primary" id="${result.id}ModalLabel">${ result.data.vaccin_title[0].text }</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <section class="about-area">
+                                                <div class="container">
+                                                    <div class="faq-content">
+                                                        <div class="about-accordion">
+                                                            <div class="accordion" id="accordionExample">
+                                                               ${accordion(length, result.data)}
+                                                            </div>
+                                                        </div> <!-- faq accordion -->
+                                                    </div> <!-- faq content -->
+                                                </div> <!-- container -->
+                                            </section>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="features-content">
-                                    <a class="features-btn" href="#">LEARN MORE</a>
-                                </div>
-                            </div> <!-- single features -->
-                        </div>`)
+                            </div>
+
+                        `)
                     })
                 }, "json")
             }, "json")
@@ -592,6 +716,8 @@
             $('#center_input').keyup(function(){
                 getCenter({search: $(this).val(), lat: lat, long: long})
             })
+
+            
         })
 
     </script>
@@ -600,5 +726,4 @@
     <script src="assets/js/ajax-contact.js"></script>
     
 </body>
-
 </html>

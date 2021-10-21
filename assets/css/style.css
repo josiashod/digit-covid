@@ -2772,38 +2772,38 @@ p {
         box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.16); }
 
 /*===========================
-       15.vaccine css 
+       15.about css 
 ===========================*/
-.vaccine-area {
-  padding-top: 80px;
-  padding-bottom: 130px;
+.about-area {
+  /* padding-top: 80px;
+  padding-bottom: 130px; */
   position: relative; }
-  .vaccine-area .vaccine-title .sub-title {
+  .about-area .about-title .sub-title {
     font-size: 18px;
     font-weight: 400;
     color: #0067f4;
     text-transform: uppercase; }
     @media (max-width: 767px) {
-      .vaccine-area .vaccine-title .sub-title {
+      .about-area .about-title .sub-title {
         font-size: 16px; } }
-  .vaccine-area .vaccine-title .title {
+  .about-area .about-title .title {
     font-size: 30px;
     padding-top: 10px; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
-      .vaccine-area .vaccine-title .title {
+      .about-area .about-title .title {
         font-size: 26px; } }
     @media (max-width: 767px) {
-      .vaccine-area .vaccine-title .title {
+      .about-area .about-title .title {
         font-size: 22px; } }
-  .vaccine-area .vaccine-accordion .accordion .card {
+  .about-area .about-accordion .accordion .card {
     border: 0;
     background: none; }
-    .vaccine-area .vaccine-accordion .accordion .card .card-header {
+    .about-area .about-accordion .accordion .card .card-header {
       padding: 0;
       border: 0;
       background: none;
       margin-top: 40px; }
-      .vaccine-area .vaccine-accordion .accordion .card .card-header a {
+      .about-area .about-accordion .accordion .card .card-header a {
         font-size: 18px;
         font-weight: 500;
         color: #000;
@@ -2811,12 +2811,12 @@ p {
         position: relative;
         padding-right: 20px; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
-          .vaccine-area .vaccine-accordion .accordion .card .card-header a {
+          .about-area .about-accordion .accordion .card .card-header a {
             font-size: 16px; } }
         @media (max-width: 767px) {
-          .vaccine-area .vaccine-accordion .accordion .card .card-header a {
+          .about-area .about-accordion .accordion .card .card-header a {
             font-size: 16px; } }
-        .vaccine-area .vaccine-accordion .accordion .card .card-header a::before {
+        .about-area .about-accordion .accordion .card .card-header a::before {
           content: '\ea58';
           font-family: 'LineIcons';
           position: absolute;
@@ -2827,11 +2827,11 @@ p {
           -ms-transform: translateY(-50%);
           -o-transform: translateY(-50%);
           transform: translateY(-50%); }
-      .vaccine-area .vaccine-accordion .accordion .card .card-header .collapsed::before {
+      .about-area .about-accordion .accordion .card .card-header .collapsed::before {
         content: '\ea5c'; }
-    .vaccine-area .vaccine-accordion .accordion .card .card-body {
+    .about-area .about-accordion .accordion .card .card-body {
       padding: 20px 20px 0; }
-  .vaccine-area .vaccine-image img {
+  .about-area .about-image img {
     width: 100%; }
 
 /*===========================
