@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="assets/images/logo.jpeg" type="image/png">
         
     <!--====== Magnific Popup CSS ======-->
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
@@ -76,7 +76,7 @@
                     <nav class="navbar navbar-expand-lg">
                        
                         <a class="navbar-brand" href="#">
-                            <img src="assets/images/logo.svg" alt="Logo">
+                            <img src="assets/images/logo.jpeg" width="75" height="75" alt="Logo">
                         </a>
                         
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
@@ -209,18 +209,16 @@
                     </div> <!-- row -->
                 </div>
             </div> <!-- row -->
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="vaccine_container">
                 <div class="col-lg-4 col-md-7 col-sm-9">
                     <div class="single-features mt-40">
                         <div class="features-title-icon d-flex justify-content-between">
                             <h4 class="features-title"><a href="#">JOHNSON JOHNSON</a></h4>
                             <div class="features-icon">
                                 <i class="lni lni-first-aid"></i>
-                                <!-- <img class="shape" src="assets/images/f-shape-1.svg" alt="Shape"> -->
                             </div>
                         </div>
                         <div class="features-content">
-                            <!-- <p class="text">Short description for the ones who look for something new. Short description for the ones who look for something new.</p> -->
                             <a class="features-btn" href="#">LEARN MORE</a>
                         </div>
                     </div> <!-- single features -->
@@ -231,11 +229,9 @@
                             <h4 class="features-title"><a href="#">Astrazeneca</a></h4>
                             <div class="features-icon">
                                 <i class="lni lni-first-aid"></i>
-                                <!-- <img class="shape" src="assets/images/f-shape-1.svg" alt="Shape"> -->
                             </div>
                         </div>
                         <div class="features-content">
-                            <!-- <p class="text">Short description for the ones who look for something new. Short description for the ones who look for something new.</p> -->
                             <a class="features-btn" href="#">LEARN MORE</a>
                         </div>
                     </div> <!-- single features -->
@@ -246,11 +242,9 @@
                             <h4 class="features-title"><a href="#">PFIZER</a></h4>
                             <div class="features-icon">
                                 <i class="lni lni-first-aid"></i>
-                                <!-- <img class="shape" src="assets/images/f-shape-1.svg" alt="Shape"> -->
                             </div>
                         </div>
                         <div class="features-content">
-                            <!-- <p class="text">Short description for the ones who look for something new. Short description for the ones who look for something new.</p> -->
                             <a class="features-btn" href="#">LEARN MORE</a>
                         </div>
                     </div> <!-- single features -->
@@ -286,11 +280,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
+                        <!-- <form action=""> -->
                             <div class="form-group">
                                 <input type="text" id="center_input" class="form-control rounded-pill bg-light px-3" placeholder="Tapez la ville ou le centre ...">
                             </div>
-                        </form>
+                        <!-- </form> -->
                         <div class="container">
                             <div class="row mt-4" id="center_list">
                             </div>
@@ -309,7 +303,6 @@
                 <div class="col-lg-6 col-md-10">
                     <div class="section-title text-center pb-30">
                         <h3 class="title">Assistance</h3>
-                        <!-- <p class="text">Stop wasting time and money designing and managing a website that doesn’t get results. Happiness guaranteed!</p> -->
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -388,7 +381,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="footer-logo text-center">
-                        <a class="mt-30" href="index.html"><img src="assets/images/logo.svg" alt="Logo"></a>
+                        <a class="mt-30" href="index.html"><img src="assets/images/logo.jpeg" width="150" height="150" alt="Logo"></a>
                     </div> <!-- footer logo -->
                     <ul class="social text-center mt-60">
                         <li><a href="https://facebook.com/uideckHQ"><i class="lni lni-facebook-filled"></i></a></li>
@@ -556,8 +549,6 @@
             input.addEventListener('keyup',  reset);
 
             $.get('https://stopcovidbj.waxkanda.com/api/motcle', function(data){
-                // $('#infoCovid')
-                console.log(data)
                 data.forEach(el => {
                     let div1 = $('<a class="col-12 border rounded py-2 btn btn-primary" />')
                                 .attr('target', '_blank')
@@ -569,11 +560,33 @@
                 });
             })
 
-            // "6.3654,2.4183"
             $.get("https://ipinfo.io", function(response) {
                 lat = response.loc.split(',')[0]
                 long = response.loc.split(',')[1]
                 getCenter({search: 'c', lat: lat, long: long})
+            }, "json")
+
+            $.get("https://covid-benin.prismic.io/api/v2", function(response) {
+                $.get(`https://covid-benin.prismic.io/api/v2/documents/search?ref=${response.refs[0].ref}`, function(response) {
+                    console.log(response)
+                    $('#vaccine_container').empty()
+                    response.results.forEach(result => {
+                        console.log(result)
+                        $('#vaccine_container').append(`<div class="col-lg-6 col-md-7 col-sm-9">
+                            <div class="single-features mt-40">
+                                <div class="features-title-icon d-flex justify-content-between">
+                                    <h4 class="features-title"><a href="#">${ result.data.vaccin_title[0].text }</a></h4>
+                                    <div class="features-icon">
+                                        <i class="lni lni-first-aid"></i>
+                                    </div>
+                                </div>
+                                <div class="features-content">
+                                    <a class="features-btn" href="#">LEARN MORE</a>
+                                </div>
+                            </div> <!-- single features -->
+                        </div>`)
+                    })
+                }, "json")
             }, "json")
 
             $('#center_input').keyup(function(){
